@@ -1,0 +1,97 @@
+// Uncomment the lines below if you want to use CUP Weapons in the crates or CUP vehicles in the AI vehicles
+//#define USE_CUP_WEAPONS 0
+//#define USE_CUP_VEHICLES 1
+
+// Armed Roaming Vehicle Options for DMS to choose from (this is an override to allow you to specify harder vehicles and includes things like armed Striders and Gorgons by default)
+_ai_vehicle_tanks = 
+	[
+		#ifdef USE_CUP_VEHICLES
+		"CUP_B_M2A3Bradley_NATO_T",
+		"CUP_B_Challenger2_NATO",
+		"CUP_O_BMP2_CSAT",
+		"CUP_B_M1A2_TUSK_MG_DES_US_Army",
+		"CUP_B_T72_CZ",
+		"CUP_B_M1A1_NATO_T",
+		"CUP_O_T55_CSAT",
+		"CUP_B_ZSU23_CDF",
+		#endif
+		"O_T_MBT_04_cannon_F",			//T-140 Angara
+		"B_APC_Tracked_01_rcws_F",		// panther
+		"B_MBT_01_TUSK_F",				// M2A4 Slammer UP
+		//"B_MBT_01_arty_F",			// M4 Scorcher
+		"B_MBT_01_cannon_F",			// 	M2A1 Slammer
+		//"B_MBT_01_mlrs_F",			// Sandstorm MLRS
+		"I_APC_tracked_03_cannon_F", 	// FV-720 Mora
+		"I_MBT_03_cannon_F",			// MBT-52 Kuma
+		"O_APC_Tracked_02_AA_F",		// ZSU-39 Tigris
+		"O_APC_Tracked_02_cannon_F",	//	BTR-K Kamysh
+		"O_APC_Wheeled_02_rcws_F",		// MSE-3 Marid
+		//"O_MBT_02_arty_F",			// 2S9 Sochor
+		"O_MBT_02_cannon_F"				// T-100 Varsuk
+			
+	];
+
+_ai_vehicle_armed = 
+	[
+		#ifdef USE_CUP_VEHICLES
+		"CUP_B_LR_Special_CZ_W",
+		"CUP_B_HMMWV_Crows_MK19_USA",
+		"CUP_O_GAZ_Vodnik_BPPU_RU",
+		"CUP_B_HMMWV_M2_GPK_USA",
+		"CUP_B_HMMWV_DSHKM_GPK_ACR",
+		"CUP_B_HMMWV_Crows_MK19_USA",
+		"CUP_O_GAZ_Vodnik_BPPU_RU",
+		"CUP_B_HMMWV_M2_GPK_USA",
+		"CUP_B_HMMWV_DSHKM_GPK_ACR",
+		"CUP_B_M7Bradley_USA_D",
+		"CUP_B_M6LineBacker_USA_D",
+		"CUP_B_BAF_Coyote_L2A1_D",
+		"CUP_B_Jackal2_L2A1_GB_W",
+		#endif
+		"Exile_Car_Offroad_Armed_Guerilla01",
+		"O_APC_Wheeled_02_rcws_F",   		// marid
+		//"I_G_Offroad_01_armed_F",			// offroad hmg
+		"B_APC_Wheeled_01_cannon_F",		// Marshall
+		//"B_G_Offroad_01_armed_F",			// offroad hmg
+		//"B_MRAP_01_gmg_F",					// hunter
+		"B_MRAP_01_hmg_F",					// hunter
+		"I_APC_Wheeled_03_cannon_F",		// gotgon
+		//"I_MRAP_03_gmg_F",					// strider	
+		"I_MRAP_03_hmg_F",					// strider
+		//"O_G_Offroad_01_armed_F",			// offroad hmg
+		//"O_MRAP_02_gmg_F",					//Ifrit
+		"O_MRAP_02_hmg_F"					//Ifrit
+
+		
+	];
+	
+	
+	
+//////// add vehicle patrol ///////////////////////
+_ai_vehicle_0 = selectRandom _ai_vehicle_tanks;
+_veh =
+[
+    [
+        [(_pos select 0) -50,(_pos select 1)+50,0]
+    ],
+    _group,
+    "random",
+    _difficulty,
+    _side,
+    _ai_vehicle_0
+] call DMS_fnc_SpawnAIVehicle;
+
+// This is the second AI Vehicle, randomly selected from the above array; _ai_vehicle_list.
+_ai_vehicle_1 = selectRandom _ai_vehicle_armed;
+_veh1 =
+[
+	[
+		[(_pos select 0) -50,(_pos select 1)+50,0]
+		
+	],
+	_group,
+	"random",
+	_difficulty,
+	_side,
+	_ai_vehicle_1
+] call DMS_fnc_SpawnAIVehicle;
