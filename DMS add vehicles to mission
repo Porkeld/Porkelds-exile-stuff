@@ -1,0 +1,55 @@
+// add vehicle patrol
+_veh =
+[
+    [
+        [(_pos select 0) -75,(_pos select 1)+75,0]
+    ],
+    _group,
+    "bambi",
+    _difficulty,
+    _side,
+    "vehicleclassname"
+    
+] call DMS_fnc_SpawnAIVehicle;
+
+// add vehicle patrol 2
+_veh1 =
+[
+    [
+        [(_pos select 0) +75,(_pos select 1)-75,0]
+    ],
+    _group,
+    "bambi",
+    _difficulty,
+    _side,
+    "vehicleclassname"
+    
+] call DMS_fnc_SpawnAIVehicle;
+
+// add vehicle patrol 3
+_veh2 =
+[
+    [
+        [(_pos select 0) -25,(_pos select 1)+25,0]
+    ],
+    _group,
+    "bambi",
+    _difficulty,
+    _side,
+    "vehicleclassname"
+    
+] call DMS_fnc_SpawnAIVehicle;
+
+// add vehicle patrol 4
+_veh3 =
+[
+    [
+        [(_pos select 0) +25,(_pos select 1)-25,0]
+    ],
+    _group,
+    "bambi",
+    _difficulty,
+    _side,
+    "vehicleclassname"
+    
+] call DMS_fnc_SpawnAIVehicle;
